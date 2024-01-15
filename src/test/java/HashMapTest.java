@@ -2,8 +2,23 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.Arrays;
+import java.util.List;
 public class HashMapTest {
+
+    // Методы интерфейса Map
+    // В интерфейсе Map есть основные действия, которые можно выполнять с хеш-таблицей.
+    // Какие методы есть у хеш-таблиц:
+    // put(K key, V value) — добавить элемент;
+    // get(Object key) — получить значение по ключу;
+    // values() — получить все значения;
+    // keySet() — получить все ключи;
+    // remove(Object key) — удалить элемент;
+    // clear() — очистить хеш-таблицу;
+    // containsKey(Object key) — узнать, содержит ли таблица ключ;
+    // containsValue(Object value) — узнать, содержит ли таблица значение.
+    // size() — получить количество элементов таблицы;
+    // isEmpty() — узнать, пустая ли таблица.
 
     //HashMap<String, String> officeTool; // объявили хеш-таблицу
     //officeTool = new HashMap<String, String>(); // создали объект
@@ -235,13 +250,11 @@ public class HashMapTest {
     @Test
     public void valuesElementInHashMap4() {
         HashMap<String, Double> kittenWeights = new HashMap<>();
-
         kittenWeights.put("Пушок", 1.62);
         kittenWeights.put("Снежок", 1.91);
         kittenWeights.put("Черныш", 1.96);
         kittenWeights.put("Ушастик", 2.02);
         kittenWeights.put("Рыжик", 1.88);
-
         // создай переменную kittenWeightsSum со значением 0
         double kittenWeightsSum = 0;
         // получи вес каждого котёнка oneKittenWeight
@@ -249,7 +262,6 @@ public class HashMapTest {
         for (double oneKittenWeight : kittenWeights.values()) {
             kittenWeightsSum = kittenWeightsSum + oneKittenWeight;
         }
-
         // выведи на экран суммарный вес котят
         System.out.println("Суммарный вес котят: " + kittenWeightsSum + " кг");
     }
@@ -264,7 +276,6 @@ public class HashMapTest {
         officeTool.put("S234", "Большой степлер");
         officeTool.put("P342", "Чёрно-белый принтер");
         officeTool.put("N845", "Острые ножницы");
-
         for (String inventory : officeTool.keySet()) {
             System.out.println(inventory);
         }
@@ -282,7 +293,6 @@ public class HashMapTest {
         kittenWeights.put("Черныш", 1.96);
         kittenWeights.put("Ушастик", 2.02);
         kittenWeights.put("Рыжик", 1.88);
-
         // пройди по хеш-таблице в цикле и выведи на экран каждый ключ
         for (String kittenName : kittenWeights.keySet()) {
             System.out.println(kittenName);
@@ -301,7 +311,6 @@ public class HashMapTest {
         officeTool.put("S234", "Большой степлер");
         officeTool.put("P342", "Чёрно-белый принтер");
         officeTool.put("N845", "Острые ножницы");
-
         officeTool.remove("P342");
         System.out.println(officeTool.get("P342"));
     }
@@ -315,7 +324,6 @@ public class HashMapTest {
         officeTool.put("S234", "Большой степлер");
         officeTool.put("P342", "Чёрно-белый принтер");
         officeTool.put("N845", "Острые ножницы");
-
         officeTool.clear(); // в хеш-таблице больше нет элементов
         System.out.println(officeTool);
     }
@@ -325,16 +333,13 @@ public class HashMapTest {
     @Test
     public void removeAndClearElementInHashMap() {
         HashMap<String, String> dinner = new HashMap<>();
-
         dinner.put("Салат", "Оливье");
         dinner.put("Первое", "Борщ");
         dinner.put("Второе", "Котлеты");
         dinner.put("Гарнир", "Пюре");
         dinner.put("Напиток", "Кисель");
-
         // выведи хеш-таблицу на экран, чтобы проверить список блюд
         System.out.println(dinner);
-
         // удали из хеш-таблицы салат
         dinner.remove("Салат");
         // выведи хеш-таблицу на экран, чтобы проверить, что салата нет
@@ -366,10 +371,8 @@ public class HashMapTest {
         statesCapitals.put("Россия", "Москва");
         statesCapitals.put("Франция", "Париж");
         statesCapitals.put("Италия", "Рим");
-
         System.out.println(statesCapitals.containsKey("Италия")); // выведется true
         System.out.println(statesCapitals.containsKey("Германия")); // выведется false
-
         System.out.println(statesCapitals.containsValue("Париж")); // выведется true
         System.out.println(statesCapitals.containsValue("Пекин")); // выведется false
     }
@@ -379,13 +382,11 @@ public class HashMapTest {
     @Test
     public void containsKeyElementInHashMap2() {
         HashMap<String, String> dinner = new HashMap<>();
-
         dinner.put("Салат", "Оливье");
         dinner.put("Первое", "Борщ");
         dinner.put("Второе", "Котлеты");
         dinner.put("Гарнир", "Пюре");
         dinner.put("Напиток", "Кисель");
-
         // выведи хеш-таблицу на экран, чтобы проверить список блюд
         System.out.println(dinner);
         // проверь по ключу, что в обед входит напиток
@@ -406,8 +407,75 @@ public class HashMapTest {
         System.out.println(dinner.containsKey("Гарнир"));
         // проверь по значению, что киселя нет
         System.out.println(dinner.containsValue("Кисель"));
-
     }
+
+
+    // Вспомни, как работают методы хеш-таблиц.
+    // Посмотри на таблицу с любимыми игрушками котят:
+    // Кличка котёнка	Любимые игрушки
+    // Пушок	Мяч
+    // Снежок	Бантик
+    // Черныш	Мышка, Носок
+    // Ушастик	Бантик, Клубок
+    // Рыжик	Мяч, Рыбка-пищалка
+    // Создай пустую хеш-таблицу kittenToys. В ней будут храниться ключи — имена котят и значения — списки их любимых игрушек.
+    // Для каждого котёнка создай список любимых игрушек и помести этот список в хеш-таблицу. Создавай списки методом Arrays.asList().
+    // Проверь, что в хеш-таблице есть игрушки Снежка.
+    // Проверь, что игрушки всех котят попали в хеш-таблицу: посчитай количество списков в хеш-таблице.
+    // Выведи на экран любимые игрушки Снежка.
+    // Выведи на экран все игрушки из хеш-таблицы.
+    // Очисть хеш-таблицу и проверь, что она пустая.
+    @Test
+    public void containsKeyElementInHashMap3() {
+        // создай хеш-таблицу
+        HashMap<String, List<String>> kittenToys = new HashMap<>();
+        // создай список любимых игрушек Пушка
+        List<String> pushokToys = Arrays.asList("Мяч");
+        // добавь игрушки Пушка в хеш-таблицу
+        kittenToys.put("Пушок", pushokToys);
+
+        // создай список любимых игрушек Снежка
+        List<String> snezhokToys = Arrays.asList("Бантик");
+        // добавь игрушки Снежка в хеш-таблицу
+        kittenToys.put("Снежок", snezhokToys);
+
+        // создай список любимых игрушек Черныша
+        List<String> chernyshToys = Arrays.asList("Мышка", "Носок");
+        // добавь игрушки Черныша в хеш-таблицу
+        kittenToys.put("Черныш", chernyshToys);
+
+        // создай список любимых игрушек Ушастика
+        List<String> ushastikToys = Arrays.asList("Бантик","Клубок");
+        // добавь игрушки Ушастика в хеш-таблицу
+        kittenToys.put("Ушастик", ushastikToys);
+
+        // создай список любимых игрушек Рыжика
+        List<String> ryzhikToys = Arrays.asList("Мяч","Рыбка-пищалка");
+        // добавь игрушки Рыжика в хеш-таблицу
+        kittenToys.put("Рыжик", ryzhikToys);
+
+        // проверь, что игрушки Снежка внесены в хеш-таблицу
+        System.out.println("Игрушки Снежка есть в таблице: " + kittenToys.containsKey("Пушок"));
+
+        // проверь количество списков в хеш-таблице
+        System.out.println("В таблице есть игрушки " + kittenToys.size() + " котят");
+
+        // проверь, игрушки каких котят есть в таблице
+        System.out.println("В таблице есть игрушки котят: " + kittenToys.keySet());
+
+        // выведи на экран любимые игрушки Снежка
+        System.out.println("Любимые игрушки Снежка: " + kittenToys.get("Снежок"));
+
+        // выведи на экран список всех игрушек
+        System.out.println("В таблице есть игрушки: " + kittenToys.values());
+
+        // очисть хеш-таблицу
+        kittenToys.clear();
+
+        // проверь, очистилась ли таблица
+        System.out.println("Хеш-таблица пуста: " + kittenToys.isEmpty());
+    }
+
 
 
 }
