@@ -1,9 +1,7 @@
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+
 public class HashMapTest {
 
     // Методы интерфейса Map
@@ -445,12 +443,12 @@ public class HashMapTest {
         kittenToys.put("Черныш", chernyshToys);
 
         // создай список любимых игрушек Ушастика
-        List<String> ushastikToys = Arrays.asList("Бантик","Клубок");
+        List<String> ushastikToys = Arrays.asList("Бантик", "Клубок");
         // добавь игрушки Ушастика в хеш-таблицу
         kittenToys.put("Ушастик", ushastikToys);
 
         // создай список любимых игрушек Рыжика
-        List<String> ryzhikToys = Arrays.asList("Мяч","Рыбка-пищалка");
+        List<String> ryzhikToys = Arrays.asList("Мяч", "Рыбка-пищалка");
         // добавь игрушки Рыжика в хеш-таблицу
         kittenToys.put("Рыжик", ryzhikToys);
 
@@ -476,6 +474,121 @@ public class HashMapTest {
         System.out.println("Хеш-таблица пуста: " + kittenToys.isEmpty());
     }
 
+    // Элементы уникальны. В списке элементы могут повторяться, а в множество не получится добавить один объект несколько раз.
+    // Поэтому множества применяют, когда нужно создать набор данных без дубликатов — например, уникальные логины пользователей.
+    // Порядок элементов не определён. Если проитерироваться по элементам множества, они выведутся в произвольном порядке.
+    // Например, так можно создать множество colorsSet:
+    // Элементы в множество добавляют так же, как в список, — методом add().
+    @Test
+    public void HashSetHashMap() {
+        HashSet<String> colorsSet = new HashSet<>(); // создали множество
+        colorsSet.add("Синий");
+        colorsSet.add("Красный");
+        colorsSet.add("Зелёный");
+        colorsSet.add("Фиолетовый");
+        colorsSet.add("Оранжевый"); // добавили цвета
+        System.out.println(colorsSet); // вывели множество на экран. Элементы выведутся в произвольном порядке — не так, как они добавлены в код.
+    }
+    // Методы интерфейса Set
+    // Тебе уже знакомы методы, которые помогают работать со списками и хеш-таблицами. Для множеств понадобятся те же методы:
+    // add(E e) — добавить элемент.
+    //
+    // В множествах этот метод возвращает значение типа boolean. Если метод вернул true, элемент добавился. Если false — множество уже содержит этот элемент: заново он не добавится;
+    // contains(Object o) — узнать, есть ли объект в множестве;
+    // remove(Object o) — удалить элемент. Если такого объекта в множестве нет, ничего не произойдёт;
+    // isEmpty() — узнать, пустое ли множество;
+    // size() — узнать количество элементов в множестве.
+
+    // Например, есть список логинов пользователей, которые заходили на сайт — siteVisitsList.
+    // Некоторые логины в нём повторяются: это значит, что пользователь заходил на сайт несколько раз.
+    // Из списка можно сделать множество, а затем получить статистику посещений без дубликатов. Понадобятся методы size() и contains():
+
+    // список логинов пользователей, которые посещали сайт за день
+    @Test
+    public void HashSetHashMap2() {
+        ArrayList<String> siteVisitsList = new ArrayList<>();
+
+        siteVisitsList.add("legioner");
+        siteVisitsList.add("hanna7");
+        siteVisitsList.add("lono_sun");
+        siteVisitsList.add("hurocan");
+        siteVisitsList.add("indie_woker");
+        siteVisitsList.add("sonya2035");
+        siteVisitsList.add("lono_sun");
+        siteVisitsList.add("legioner");
+        siteVisitsList.add("hanna7");
+        siteVisitsList.add("futur100");
+        siteVisitsList.add("legioner");
+
+        // статистика посещения сайта:
+        System.out.println("Все визиты: " + siteVisitsList);
+        System.out.println("Всего визитов: " + siteVisitsList.size());
+
+    /* Список можно превратить в множество: вызвать конструктор HashSet
+    и передать в него список */
+        HashSet<String> siteVisitsSet = new HashSet<>(siteVisitsList);
+
+        // статистика уникальных посещений сайта:
+        System.out.println("Уникальные визиты: " + siteVisitsSet);
+        System.out.println("Всего уникальных визитов: " + siteVisitsSet.size());
+
+        // проверка, заходили ли на сайт отдельные пользователи:
+        System.out.println("Заходил ли пользователь 'futur100' сегодня на сайт? Ответ: " + siteVisitsSet.contains("futur100"));
+        System.out.println("Заходил ли пользователь 'lucky_kitten' сегодня на сайт? Ответ: " + siteVisitsSet.contains("lucky_kitten"));
+    }
 
 
+    // Вспомни таблицу с любимыми игрушками котят:
+    // Кличка котёнка	Любимые игрушки
+    // Пушок	Мяч
+    // Снежок	Бантик
+    // Черныш	Мышка, Носок
+    // Ушастик	Бантик, Клубок
+    // Рыжик	Мяч, Рыбка-пищалка
+    // Все игрушки котят хранятся в списке favoriteToys.
+    // Создай из списка favoriteToys множество, чтобы избавиться от дубликатов.
+    // Посчитай общее количество любимых игрушек в множестве.
+    // Добавь в множество новые игрушки: пакет и коробку.
+    // Проверь, есть ли в множестве бантик и ботинок.
+    // Удали носок из множества.
+    // Выведи множество на экран.
+    @Test
+    public void HashSetHashMap3() {
+        ArrayList<String> favoriteToys = new ArrayList<String>(); // создали список всех любимых игрушек
+
+        favoriteToys.add("Мяч"); // добавили любимые игрушки Пушка в список
+
+        favoriteToys.add("Бантик"); // добавили любимые игрушки Снежка в список
+
+        favoriteToys.add("Мышка");
+        favoriteToys.add("Носок"); // добавили любимые игрушки Черныша в список
+
+        favoriteToys.add("Бантик");
+        favoriteToys.add("Клубок"); // добавили любимые игрушки Ушастика в список
+
+        favoriteToys.add("Мяч");
+        favoriteToys.add("Рыбка-пищалка"); // добавили любимые игрушки Рыжика в список
+
+        // создай из списка множество любимых игрушек
+        HashSet<String> uniqueFavoriteToys = new HashSet<>(favoriteToys);
+
+        // посчитай количество игрушек в множестве
+        System.out.println("Разных игрушек у котят: " + uniqueFavoriteToys.size());
+
+        // добавь в множество пакет и коробку
+        uniqueFavoriteToys.add("Пакет");
+        uniqueFavoriteToys.add("Коробка");
+
+        // проверь, есть ли в множестве "Бантик"
+        System.out.println("Бантик есть в списке любимых игрушек: " + uniqueFavoriteToys.contains("Бантик"));
+
+        // проверь, есть ли в множестве "Ботинок"
+        System.out.println("Ботинок есть в списке любимых игрушек: " + uniqueFavoriteToys.contains("Ботинок"));
+
+        // убери "Носок" из множества
+        uniqueFavoriteToys.remove("Носок");
+
+        // выведи множество на экран
+        System.out.println(uniqueFavoriteToys);
+    }
 }
