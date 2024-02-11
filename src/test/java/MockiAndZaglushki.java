@@ -9,7 +9,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 public class MockiAndZaglushki {
 
     //Подключить Mockito к тестовому классу
-    //Второй шаг — подключить Mockito к тестовому классу, чтобы использовать мок именно в нём. В примере с курьерами пусть это будет класс OrderManagementServiceTest.
+    //Второй шаг — подключить Mockito к тестовому классу, чтобы использовать мок именно в нём.
+    // В примере с курьерами пусть это будет класс OrderManagementServiceTest.
     //Есть два способа: аннотация и метод.
     //С помощью аннотации. Перед тестовым классом нужно добавить аннотацию @RunWith с раннером MockitoJUnitRunner:
 //    @RunWith(MockitoJUnitRunner.class)
@@ -17,9 +18,9 @@ public class MockiAndZaglushki {
 //    ...
 //    }
 
-    //С помощью метода. Нужно добавить в тестовый класс специальный метод с телом MockitoAnnotations.initMocks(this).
+    // С помощью метода. Нужно добавить в тестовый класс специальный метод с телом MockitoAnnotations.initMocks(this).
     // Пусть метод называется init() — от initialize, «инициализировать».
-    //Мок нужно создавать перед каждым тестом. Поэтому перед методом init() понадобится аннотация @Before.
+    // Мок нужно создавать перед каждым тестом. Поэтому перед методом init() понадобится аннотация @Before.
 //    public class OrderManagementServiceTest {
 //        @Before
 //        public void init() {
@@ -28,7 +29,7 @@ public class MockiAndZaglushki {
 //    ...
 //    }
 
-    //Обычно моки подключают через аннотацию: так удобнее.
+    // Обычно моки подключают через аннотацию: так удобнее.
     // Но иногда это невозможно: например, когда уже есть аннотация для параметризованных тестов — @RunWith(Parameterized.class).
     // Две одинаковые аннотации использовать нельзя. Тогда подойдёт второй способ.
 
@@ -1046,7 +1047,7 @@ public class MockiAndZaglushki {
     //Чтобы увидеть подробнее, какие именно строки и ветви не покрыты, зайди в пакет, класс и метод внутри него:
     //https://code.s3.yandex.net/qa-automation-engineer/java/schemes/paid-track/sprint2/unitTests/S2_05_16.png
     //Цвета строк означают, насколько полно тест покрыт. Зелёный — покрыто тестами, жёлтый — покрыто частично, красный — не покрыто совсем.
-    //Отчёт можно посмотреть и прямо в IDEA: для этого открой Run — Show Coverage Data. Нажми + (Add) и выбери файл jacoco.exec.
+    //Отчёт можно посмотреть и прямо в IDEA: для этого открой Run — Show Coverage Api.Data. Нажми + (Add) и выбери файл jacoco.exec.
     //https://code.s3.yandex.net/qa-automation-engineer/java/schemes/paid-track/sprint2/unitTests/S2_05_17.png
     //После этого нажми Show Selected. У цветов слева те же значения:
     //https://code.s3.yandex.net/qa-automation-engineer/java/schemes/paid-track/sprint2/unitTests/S2_05_18.png
